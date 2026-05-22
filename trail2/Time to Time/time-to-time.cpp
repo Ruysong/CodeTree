@@ -2,15 +2,21 @@
 using namespace std;
 
 int main() {
-    int a,b,c,d;
-    cin >>a>>b>> c>>d;
+  int a, b, c, d;
+int elapsed = 0;
 
-    int start;
-    int end;
+cin >> a >> b >> c >> d;
 
-    start = a*60+b;
-    end = c*60 + d;
+while (!(a == c && b == d)) {
+    b++;
+    elapsed++;
 
-    cout << end-start;
+    if (b == 60) {
+        a++;
+        b = 0;
+    }
+}
+
+cout << elapsed;
     return 0;
 }
