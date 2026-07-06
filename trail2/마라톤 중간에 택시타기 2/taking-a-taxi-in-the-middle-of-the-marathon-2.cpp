@@ -29,3 +29,12 @@ int main() {
     cout << Minrange;
     return 0;
 }
+
+/* 답지 풀이
+        int prev_idx = 0;
+        for(int j = 1; j < n; j++) {
+            if(j == i) continue;
+            dist += abs(x[prev_idx] - x[j]) + abs(y[prev_idx] - y[j]);
+            prev_idx = j;
+        }
+        */
