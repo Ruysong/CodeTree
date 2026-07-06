@@ -32,3 +32,6 @@ int main() {
     cout << a_num;
     return 0;
 }
+/*
+답지: 
+*/
