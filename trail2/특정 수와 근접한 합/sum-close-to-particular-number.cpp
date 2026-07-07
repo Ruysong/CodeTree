@@ -13,7 +13,7 @@ int main() {
     int sum;
     int dif=INT_MAX;
     for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
+        for(int j=i+1;j<n;j++){
             sum=0;
             for(int k=0;k<n;k++){
             if( k==j || k==i) continue;
