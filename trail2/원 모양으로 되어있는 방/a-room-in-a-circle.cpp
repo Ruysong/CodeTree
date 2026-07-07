@@ -20,7 +20,7 @@ int main() {
         int range=0;
         int a =total;
         for(int j=0;j<n;j++){
-            a= a-room[(i+j+n)%n];
+            a= a-room[(i+j)%n];
             
             if(a=0) {
                 break;}
