@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int n;
@@ -23,7 +24,7 @@ int main() {
         for(int j=0;j<n-2;j++){
              for(int k=0; k<n;k++){
                 for(int l=0;l<n-2;l++){
-                   if(!(i<=k && k<=i+2)) cnt = sum[i][j]+ sum[k][l];
+                   if(i != k || j > l+2 || j+2<l) cnt = sum[i][j]+ sum[k][l];
                     ans = max(cnt,ans);
                     cnt =0;
                 }
