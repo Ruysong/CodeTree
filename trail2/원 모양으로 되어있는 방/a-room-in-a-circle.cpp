@@ -22,7 +22,7 @@ int main() {
         for(int j=0;j<n;j++){
             a= a-room[(i+j)%n];
             
-            if(a=0) {
+            if(a<0) {
                 break;}
             range += a;
         }
