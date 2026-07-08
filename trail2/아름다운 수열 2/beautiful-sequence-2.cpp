@@ -28,7 +28,7 @@ int main() {
                 same = false;
                 break;
             }
-       } //냅다 비교. 이번 j위치 신경썻고. 
+       } //냅다 비교. 이번 j위치 신경썻고. 내쪼대로 비교
 
         if(same) {
             ans++;
