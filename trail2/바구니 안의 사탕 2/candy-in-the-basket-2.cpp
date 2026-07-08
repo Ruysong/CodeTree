@@ -13,7 +13,7 @@ int main() {
         candy[b] +=a;
     } //candy 좌표랑 개수 입력 받아.
     int max_sum =INT_MIN;
-    for(int i=0;i<101-(2*k+1);i++){
+    for(int i=0;i<=101-(2*k+1);i++){
         // i is central point
         int sum=0;
         for(int j=0;j < 2*k +1;j++){
