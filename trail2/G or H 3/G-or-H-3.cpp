@@ -6,7 +6,7 @@ int n,k;
 
 int main() {
     cin >> n >>k;
-    int placed[10000]={0};
+    int placed[10001]={0};
     for(int i = 0; i < n; i++){
        int a; //position
        char b; 
@@ -16,7 +16,7 @@ int main() {
     }
     
     int max_cnt = 0;
-    for(int i = 0; i < 10000 -(k+1) ; i++) {
+    for(int i = 0; i <= 10000 -(k) ; i++) {
         int candy_num = 0;
         for(int j = i; j < i + k+1; j++)
             candy_num += placed[j];
