@@ -27,7 +27,7 @@ int main() {
 
 
             
-    if(min_diff==INT_MAX ) return -1;
+    if(min_diff==INT_MAX ) cout << -1;
     else cout << min_diff;
     
     return 0;
