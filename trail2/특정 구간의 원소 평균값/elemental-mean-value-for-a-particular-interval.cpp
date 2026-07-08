@@ -7,19 +7,21 @@ int n ;
 int main() {
     cin >> n;
     int arr[100];
-    for(int &x: arr){
-        cin >> x;
-    }
+   for(int i =0;i<n;i++){
+    cin >> arr[i];
+   }
     int cnt=0;
     int max_sum = 0;
     for(int i = 0; i < n; i++)
         for(int j = i; j < n; j++) {
-            int mean_val = 0;
+            int sum = 0;
             for(int k = i; k <= j; k++)
-                mean_val += arr[k];
-            mean_val  /= (j-i+1);
-            for(int k = i; k <= j; k++)
-            if(mean_val == arr[k]) cnt++;
+                sum += arr[k];
+            
+            for(int k = i; k <= j; k++){
+            if(sum == (j-i+1) *arr[k] ) {cnt++;
+            break;}
+            }
         }
     
     cout << cnt;
