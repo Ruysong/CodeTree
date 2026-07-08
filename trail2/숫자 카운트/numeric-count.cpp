@@ -2,7 +2,7 @@
 using namespace std;
 
 
-int main() {
+int main() { // 까꾸로 문제였음. b의 질답을 보고 푸는게 아니라, 정답을 먼저 완전탐색 돌리고, 그거에 따라 b의 질답과 모순여부 판단해서 후보 판단.
     int n;
     int question[11];
     int cnt1[11];
