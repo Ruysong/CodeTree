@@ -40,3 +40,16 @@ int main() {
     cout << cnt;
     return 0;
 }
+
+/*
+답지풀이: 
+if((abs(a - i) <= 2 || abs(a - i) >= n - 2) && (abs(b - j) <= 2 || abs(b - j) >= n - 2) && 
+                   (abs(c - k) <= 2 || abs(c - k) >= n - 2))
+                    cnt++;
+                
+                // 모든 자리가 주어진 두번째 조합과의 거리가 2 이내인지 확인합니다.
+                else if((abs(a2 - i) <= 2 || abs(a2 - i) >= n - 2) && (abs(b2 - j) <= 2 || abs(b2 - j) >= n - 2) && 
+                   (abs(c2 - k) <= 2 || abs(c2 - k) >= n - 2))
+                    cnt++;
+            }
+*/
