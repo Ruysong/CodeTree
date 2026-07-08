@@ -12,16 +12,22 @@ int main() {
         cin >> a>>b;
         candy[b] +=a;
     } //candy 좌표랑 개수 입력 받아.
-    int max_sum =INT_MIN;
-    for(int i=0;i<=101-(2*k+1);i++){
-        // i is central point
-        int sum=0;
-        for(int j=0;j < 2*k +1;j++){
-            sum += candy[i+j];
+   int ans = 0;
+
+    for(int c = 0; c <= 100; c++) {
+        int sum = 0;
+
+        for(int x = c - k; x <= c + k; x++) {
+            if(0 <= x && x <= 100) {
+                sum += candy[x];
+            }
         }
-        max_sum = max(max_sum,sum);
-    } 
-    cout << max_sum;
+
+        ans = max(ans, sum);
+    }
+
+
+    cout << ans;
 
     return 0;
 }
