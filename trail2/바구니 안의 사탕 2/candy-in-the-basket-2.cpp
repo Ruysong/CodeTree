@@ -10,7 +10,7 @@ int main() {
     for(int i=0;i<n;i++){
         int a,b;
         cin >> a>>b;
-        candy[b] =a;
+        candy[b] +=a;
     } //candy 좌표랑 개수 입력 받아.
     int max_sum =INT_MIN;
     for(int i=0;i<101-(2*k+1);i++){
