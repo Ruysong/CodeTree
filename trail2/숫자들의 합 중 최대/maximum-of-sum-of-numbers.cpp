@@ -16,3 +16,11 @@ int main() {
     cout << ans;
     return 0;
 }
+
+/*
+답지는 이렇게 
+        while(num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+*/
