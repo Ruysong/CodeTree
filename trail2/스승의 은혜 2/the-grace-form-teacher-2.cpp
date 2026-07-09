@@ -10,8 +10,12 @@ int main() {
     int ans=0;
     sort(price,price+n);
     for(int i=0;i<n;i++){
-         price[i] /=2; // 반값을 쓸.
-         
+         int tmp[1000] = {};
+        for(int j = 0; j < n; j++)
+            tmp[j] = price[j];
+        tmp[i] /= 2;
+         sort(tmp, tmp + n);
+
          int money =b;
          int ppl=0;
             for(int j=0;j<n;j++){
