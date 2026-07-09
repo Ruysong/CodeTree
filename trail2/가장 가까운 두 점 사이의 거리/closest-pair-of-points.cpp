@@ -7,7 +7,7 @@ int segments[100][2] = {};
 
 int main() {
     cin >> n;
-    int ans = 100;
+    int ans = 100000;
 
     for(int i = 0; i < n; i++)
          cin >> segments[i][0]>> segments[i][1];
