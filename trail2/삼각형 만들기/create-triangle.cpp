@@ -21,7 +21,7 @@ int main() {
                 int area=0;
                 if( x1 == x2 && (y2 == y3 || y1 ==y3)) area = abs(x3-x1)*abs(y2-y1);
                 else if( x2 == x3 && (y2 == y1 || y1 ==y3)) area = abs(x3-x1)*abs(y2-y3);
-                else if( x1 == x3 && (y2 == y3 || y1 ==y3)) area = abs(x2-x1)*abs(y3-y1);
+                else if( x1 == x3 && (y2 == y3 || y2 ==y1)) area = abs(x2-x1)*abs(y3-y1);
 
                 ans = max(ans,area);
             }
