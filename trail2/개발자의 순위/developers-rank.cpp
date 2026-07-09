@@ -19,7 +19,7 @@ int main() {
    for(int i = 0; i < n; i++) 
         for(int j = 0; j < n; j++){
             int cnt =0;
-            
+            if (i==j) continue;
             for(int game = 0; game < k; game++){
                 if( pos[game][i] <  pos[game][j]) cnt++;
             }
