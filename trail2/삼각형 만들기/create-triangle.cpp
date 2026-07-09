@@ -19,9 +19,9 @@ int main() {
                 int x2 = segments[j][0], y2 = segments[j][1];
                 int x3 = segments[k][0], y3 = segments[k][1];
                 int area=0;
-                if( y1 == y2 &&y2 != y3) area = abs(x2-x1)*abs(y2-y3);
-                else if( y2 == y3 &&y2 != y1) area = abs(x2-x3)*abs(y2-y1);
-                else if( y3 == y1 &&y2 != y3) area = abs(x3-x1)*abs(y2-y3);
+                if( x1 == x2 && (y2 == y3 || y1 ==y3)) area = abs(x3-x1)*abs(y2-y1);
+                else if( x2 == x3 && (y2 == y1 || y1 ==y3)) area = abs(x3-x1)*abs(y2-y3);
+                else if( x1 == x3 && (y2 == y3 || y1 ==y3)) area = abs(x2-x1)*abs(y3-y1);
 
                 ans = max(ans,area);
             }
