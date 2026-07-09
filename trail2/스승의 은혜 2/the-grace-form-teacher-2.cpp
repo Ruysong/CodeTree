@@ -11,8 +11,9 @@ int main() {
     sort(price,price+n);
     for(int i=0;i<n;i++){
          int tmp[1000] = {};
+        
         for(int j = 0; j < n; j++)
-            tmp[j] = price[j];
+        tmp[j] = price[j];
         tmp[i] /= 2;
          sort(tmp, tmp + n);
 
@@ -26,7 +27,7 @@ int main() {
 
         }
         ans = max(ans, ppl);
-        price[i] *=2;
+        tmp[i] *=2;
     }
     cout << ans;
     return 0;
