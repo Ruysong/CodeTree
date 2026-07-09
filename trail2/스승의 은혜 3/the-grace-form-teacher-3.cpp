@@ -52,6 +52,4 @@ int main() {
     cout << ans;
     return 0;
 }
-    cout << ans;
-    return 0;
-}
+    
