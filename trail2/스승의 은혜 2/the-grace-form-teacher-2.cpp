@@ -19,10 +19,10 @@ int main() {
          int money =b;
          int ppl=0;
             for(int j=0;j<n;j++){
-            if(price[j] <= money) {money -= price[j];
+            if(tmp[j] <= money) {money -= tmp[j];
             ppl++;
             }
-            else if(price[j] > money) break;
+            else if(tmp[j] > money) break;
 
         }
         ans = max(ans, ppl);
