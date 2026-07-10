@@ -19,8 +19,8 @@ int main() {
     int s_dist = INT_MAX;
     int n_dist = INT_MAX;
 
-    for(int j = 0; j < t; j++) {
-        int dist = abs(i - pos[j]);
+    for(int j = 0; j < 1000; j++) {
+        int dist = abs(i - j);
 
         if(pos[j] == 'S') {
             s_dist = min(s_dist, dist);
