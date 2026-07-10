@@ -9,7 +9,7 @@ int temp[1000][2]={};
 int Workload(int num, int a,int b) {
     if(num < a)
         return c;
-    else if(num < b)
+    else if(num <= b)
         return g;
     else 
         return h;
