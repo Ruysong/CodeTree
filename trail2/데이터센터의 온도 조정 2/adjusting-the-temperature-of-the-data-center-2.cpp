@@ -7,7 +7,8 @@ int n,c,g,h;
 int temp[1000][2]={};
 
 int Workload(int num, int a,int b) {
-    if(num < a)
+    if(num ==0) return c;
+    else if(num < a)
         return c;
     else if(num <= b)
         return g;
