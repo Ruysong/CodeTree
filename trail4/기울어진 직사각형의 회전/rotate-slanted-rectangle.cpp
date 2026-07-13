@@ -3,8 +3,8 @@ using namespace std;
 
 int n;
 int grid[101][101];
-int px[100];
-int py[100]; // 직사각형 저장할 선형 배
+int px[10000];
+int py[10000]; // 직사각형 저장할 선형 배열
 
 int x, y;
 int move_num[4];
