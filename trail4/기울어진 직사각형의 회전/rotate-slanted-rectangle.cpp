@@ -18,8 +18,7 @@ int InRange(int r, int c) {
 }
 
 void Shift(int x, int y, int dir) {
-    int px[100];
-    int py[100];
+        
     int cnt = 0;
 
     int cx = x;
@@ -43,8 +42,8 @@ void Shift(int x, int y, int dir) {
     // 마지막 좌표는 다시 시작점으로 돌아온 중복 좌표라 제거
     cnt--;
 
-    if(dir == 0) {
-        // 반시계 방향으로 한 칸 shift
+    if(dir == 1) {
+        // 시계 방향으로 한 칸 shift
         int temp = grid[px[0]][py[0]];
 
         for(int i = 0; i < cnt - 1; i++) {
@@ -54,7 +53,7 @@ void Shift(int x, int y, int dir) {
         grid[px[cnt - 1]][py[cnt - 1]] = temp;
     }
     else {
-        // 시계 방향으로 한 칸 shift
+        // 반시계 방향으로 한 칸 shift
         int temp = grid[px[cnt - 1]][py[cnt - 1]];
 
         for(int i = cnt - 1; i >= 1; i--) {
