@@ -21,8 +21,9 @@ int main() {
         int sum=0;
 
       for(int j = 0; j < n; j++) {
-        sum = segments[i][j];
+        
         for(int k=1;k<n;k++) {
+        sum = segments[i][j];
         sum += segments[i+k][j] * InRange(i+k,j)
         +segments[i][j+k] *InRange(i,j+k)
         +segments[i-k][j] *InRange(i-k,j)
