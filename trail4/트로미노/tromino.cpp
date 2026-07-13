@@ -3,7 +3,7 @@
 using namespace std;
 
 int n,m;
-int segments[101][101]={};
+int segments[201][201]={};
 int Inrange(int i,int j){
     return (i<n && j <m) ;
 }
