@@ -6,7 +6,7 @@ using namespace std;
 int n, m;
 int grid[20][20];
 
-int GetSum(int r1, int c1, int r2, int c2) {
+int GetSize(int r1, int c1, int r2, int c2) {
     
     for(int i = r1; i <= r2; i++) {
         for(int j = c1; j <= c2; j++) {
@@ -34,7 +34,7 @@ int main() {
                 for(int c2 = c1; c2 < m; c2++) {
                     
                     // 사각형: (r1, c1) ~ (r2, c2)
-                    int sum = GetSum(r1, c1, r2, c2);
+                    int sum = GetSize(r1, c1, r2, c2);
                                    
                                
                     ans = max(ans, sum);   
