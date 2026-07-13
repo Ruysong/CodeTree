@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <climits>
+#include <algorithm>
 using namespace std;
 
 string s;
@@ -22,10 +23,11 @@ int GetLength(string s) {
     
     for(int i = 0; i < n-1; i++){
         if(s[i]!= s[i+1]) { len +=2;
+        
         }
 
     }
-    if (len ==2) len =3;
+    if (len==2 && s.length() >=10 ) len =3;
 
     return len;
 }
