@@ -36,14 +36,21 @@ void Shift(int r1,int c1,int r2,int  c2){
 }
 
 void Mean_Cell(int r1,int c1,int r2,int  c2){
+    int temp[101][101];
     for(int i=r1; i<=r2; i++){
         for(int j=c1; j<=c2; j++){
-            int a=0,b=0,c=0,d=0;
-            if(InRange(i-1,j)) a=grid[i-1][j];
-            if(InRange(i-1,j)) a=grid[i-1][j];
-            grid[i][j] = 
+            int a=0,b=0,c=0,d=0, cnt=1;
+            if(InRange(i-1,j)) {a=grid[i-1][j];cnt++;}
+            if(InRange(i,j-1)) {b=grid[i][j-1];cnt++;}
+            if(InRange(i+1,j)) {c=grid[i+1][j];cnt++;}
+            if(InRange(i,j+1)) {d=grid[i][j+1];cnt++;}
+            temp[i][j] = ( a+b+c+d+grid[i][j] ) / cnt;
         }
     }
+    for(int i=r1; i<=r2; i++){
+        for(int j=c1; j<=c2; j++){
+            grid[i][j] = temp[i][j];
+        }}
     
 
 }
@@ -66,6 +73,7 @@ int main() {
         r2--;
         c2--;       // 행이 우리는 0부터 시작이니까..
         Shift(r1, c1, r2, c2);
+
         Mean_Cell(r1, c1, r2, c2);
 
     }
