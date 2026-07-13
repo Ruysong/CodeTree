@@ -20,12 +20,11 @@ int main() {
     for(int i = 0; i < n; i++) { 
        for(int j = 0; j < n; j++) {
 
-        for(int k=0;k<n;k++){
+        for(int k=0;k <2* n;k++){
             int sum =0;
         for(int x=0;x<n;x++){
         for(int y=0;y<n;y++)
             {
-                
             if( (abs(i - x) + abs(j - y) <= k) ){
                 sum += segments[x][y];
             }          
