@@ -18,20 +18,21 @@ int main() {
 
     int ans =0;
     for(int i = 0; i < n; i++) { 
-        int sum=0;
+       for(int j = 0; j < n; j++) {
 
-      for(int j = 0; j < n; j++) {
-        
-        for(int k=0;k<n;k++) {
-        sum = segments[i][j];
-        sum += segments[i+k][j] * InRange(i+k,j)
-        +segments[i][j+k] *InRange(i,j+k)
-        +segments[i-k][j] *InRange(i-k,j)
-        +segments[i][j-k] *InRange(i,j-k);
-
-        if( 2*k*k+ 2*k+1 < sum*m ) ans = max(ans,sum);
+        for(int k=0;k<n;k++){
+            int sum =0;
+        for(int x=0;x<n;x++){
+        for(int y=0;y<n;y++)
+            {
+                
+            if( (abs(i - x) + abs(j - y) <= k) ){
+                sum += segments[x][y];
+            }          
     }
-
+    }
+        if( 2*k*k+ 2*k+1 <= sum*m ) ans = max(ans,sum);
+        }
       }
 }
 
