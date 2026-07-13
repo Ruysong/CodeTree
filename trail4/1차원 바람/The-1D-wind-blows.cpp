@@ -32,7 +32,10 @@ void ShiftRight(int x){
 }
 
 void SpreadUp(int row, char dir){
-    char cur_dir = dir;
+    char cur_dir;
+
+    if(dir == 'R') cur_dir = 'L';
+    else if(dir == 'L') cur_dir = 'R';
 
     while(row >= 1){
         if(CanSpread(row, row - 1)) {
@@ -52,7 +55,10 @@ void SpreadUp(int row, char dir){
 }
 
 void SpreadDown(int row, char dir){
-    char cur_dir = dir;
+    char cur_dir;
+
+    if(dir == 'R') cur_dir = 'L';
+    else if(dir == 'L') cur_dir = 'R';
 
     while(row < n - 1){
         if(CanSpread(row, row + 1)) {
