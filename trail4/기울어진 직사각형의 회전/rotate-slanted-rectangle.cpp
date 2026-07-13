@@ -2,7 +2,7 @@
 using namespace std;
 
 int n;
-int grid[21][21];
+int grid[101][101];
 int px[100];
 int py[100]; // 직사각형 저장할 선형 배
 
