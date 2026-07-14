@@ -9,18 +9,17 @@ int pick[100][3]={};
 int main() {
     cin >>n;
     
-    for(int j=0;j<n; j++) cin>> pick[j][0]>>pick[j][1]>>pick[j][2];
-    
+    for(int j=0;j<n; j++) {cin>> pick[j][0]>>pick[j][1]>>pick[j][2];
+    pick[j][0]--;
+    pick[j][1]--;
+    pick[j][2]--;
+    }
     for(int i = 0; i <= 2; i++) {
         int cup[3]={0};
         cup[i]=1;
         int cnt=0;
         for(int j=0;j<n; j++){
-                pick[j][0]--;
-                pick[j][1]--;
-                pick[j][2]--;
-
-            int temp = cup[pick[j][0]];
+                         int temp = cup[pick[j][0]];
             cup[pick[j][0]]=cup[pick[j][1]];
             cup[pick[j][1]]=temp;
             
