@@ -16,9 +16,9 @@ int main() {
         cup[i]=1;
         int cnt=0;
         for(int j=0;j<n; j++){
-                 pick[j][0]--;
-                    pick[j][1]--;
-                    pick[j][2]--
+                pick[j][0]--;
+                pick[j][1]--;
+                pick[j][2]--;
 
             int temp = cup[pick[j][0]];
             cup[pick[j][0]]=cup[pick[j][1]];
