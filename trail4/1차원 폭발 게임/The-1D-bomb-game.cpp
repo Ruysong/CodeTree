@@ -32,7 +32,7 @@ bool Bombing(){
         i += cnt;  //i는 여기서 컨트롤 해줄거임
     }
 
-    bombs = temps;
+    bombs = temps;  // 벡터 최고 장점. 걍 새로운 템스를 샥 덮어주면 이쁘게 다 덮임
 
     return exploded;
 }
