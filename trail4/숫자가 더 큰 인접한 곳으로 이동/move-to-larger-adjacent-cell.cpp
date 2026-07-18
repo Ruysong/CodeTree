@@ -32,15 +32,14 @@ int main() {
     while(ok){
         int close=grid[x][y];
         int max_i=-1;
-        int tx=x;
-        int ty=y;
+        
         for(int i=0;i<4;i++){
             int nx =x + dx[i];
             int ny =y + dy[i];
-            if(grid[nx][ny] > close && InRange(nx,ny) ) {
-               max_i=i;
-               break;
-            }
+            if (InRange(nx, ny) && grid[nx][ny] > close) {
+    max_i = i;
+    break;
+}
            
     }
          if(max_i != -1) {
