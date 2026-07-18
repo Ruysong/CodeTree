@@ -6,7 +6,7 @@ int n;
 int grid[101][101]={};
 int r,c;
 
-int dx[4]={1,-1,0,0};
+int dx[4]={-1,1,0,0};
 int dy[4]={0,0,-1,1};
 
 int InRange(int x,int y){
@@ -37,8 +37,8 @@ int main() {
             int nx =x + dx[i];
             int ny =y + dy[i];
             if (InRange(nx, ny) && grid[nx][ny] > close) {
-    max_i = i;
-    break;
+            max_i = i;
+            break;
 }
            
     }
