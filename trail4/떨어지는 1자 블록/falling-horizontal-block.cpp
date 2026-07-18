@@ -4,6 +4,11 @@ using namespace std;
 int n, m, k;
 int grid[101][101];
 
+
+int InRange(int x,int y){
+    return x>=0 && x< n && y>=0 && y <n;
+}
+
 int main() {
     cin >> n >> m >> k;
     k--;
@@ -22,10 +27,11 @@ int main() {
             for(int l=k;l<m+k;l++){
                 if(grid[i+1][l]!=0) nxt= true;
             }
-            if(nxt ==true) {
+            if(nxt ==true || !InRange(i+1,k)) {
                 for(int l=k;l<m+k;l++){
                 grid[i][l]=1; /// 채워줍시다.
             }
+            
             break;
             }
 
