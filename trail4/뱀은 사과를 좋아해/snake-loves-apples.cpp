@@ -3,10 +3,10 @@
 using namespace std;
 
 int n, m, k;
+int x, y;
 int grid[101][101];
 
-int head_x = 0;
-int head_y = 0;
+int head_x = 0, head_y = 0;
 int elapsed_time = 0;
 
 queue<int> snakeX;
@@ -19,7 +19,7 @@ bool InRange(int x, int y) {
     return x >= 0 && x < n && y >= 0 && y < n;
 }
 
-bool SnakeMove(char dir, int p) {
+int SnakeMove(char dir, int p) {
     int dir_num;
 
     if (dir == 'U') dir_num = 0;
@@ -33,15 +33,11 @@ bool SnakeMove(char dir, int p) {
 
         elapsed_time++;
 
-        // 격자 밖이면 게임 종료
         if (!InRange(nx, ny)) {
-            return false;
+            return 0;
         }
 
-        bool hasApple = (grid[nx][ny] == 1);
-
-        // 사과가 없으면 꼬리 제거
-        if (!hasApple) {
+        if (grid[nx][ny] != 1) {
             int tail_x = snakeX.front();
             int tail_y = snakeY.front();
 
@@ -51,12 +47,10 @@ bool SnakeMove(char dir, int p) {
             grid[tail_x][tail_y] = 0;
         }
 
-        // 이미 뱀의 몸이 있는 곳이면 게임 종료
         if (grid[nx][ny] == 2) {
-            return false;
+            return 0;
         }
 
-        // 새 머리 추가
         head_x = nx;
         head_y = ny;
 
@@ -66,7 +60,7 @@ bool SnakeMove(char dir, int p) {
         grid[head_x][head_y] = 2;
     }
 
-    return true;
+    return 1;
 }
 
 int main() {
@@ -75,18 +69,15 @@ int main() {
     for (int i = 0; i < m; i++) {
         int a, b;
         cin >> a >> b;
-
         a--;
         b--;
 
-        grid[a][b] = 1;  // 사과
+        grid[a][b] = 1;
     }
 
     snakeX.push(0);
     snakeY.push(0);
-    grid[0][0] = 2;  // 처음 뱀 위치
-
-    bool game_over = false;
+    grid[0][0] = 2;
 
     for (int i = 0; i < k; i++) {
         char dir;
@@ -94,12 +85,12 @@ int main() {
 
         cin >> dir >> p;
 
-        if (!game_over && !SnakeMove(dir, p)) {
-            game_over = true;
+        if (SnakeMove(dir, p) == 0) {
+            break;
         }
     }
 
-    cout << elapsed_time << '\n';
+    cout << elapsed_time;
 
     return 0;
 }
