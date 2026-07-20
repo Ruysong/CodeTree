@@ -20,6 +20,13 @@ bool InRange(int x, int y) {
 
 
 void Simulate(){
+    // 1초일떄의 상황을 케어.
+     if(grid[r][c] == 1)
+        dir_num = slash_dir[dir_num];
+    else if(grid[r][c] == 2)
+        dir_num = backslash_dir[dir_num];
+
+
     while(true){
     elasped_time++;
     int nx= r + dx[dir_num];
