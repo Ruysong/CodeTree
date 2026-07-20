@@ -94,7 +94,7 @@ int main() {
   
     for(int i=0;i<n;i++){
           c=0;
-    dir_num =0;
+        dir_num =1;
         elasped_time =1;
         r=i;
         Simulate();
