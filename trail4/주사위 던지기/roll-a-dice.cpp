@@ -3,7 +3,7 @@ using namespace std;
 
 int n, m, r, c;
 int grid[101][101] = {};
-char dir[100001];
+char dir[1000001];
 
 int top = 1;
 int bottom = 6;
