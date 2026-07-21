@@ -1,20 +1,28 @@
 #include <iostream>
 using namespace std;
 
+const int MAX_N = 100;
+const int LIMIT = 2000;
+const int OFFSET = 2000;
+const int MAX_POS = 4001;
+
 int test_case;
 int n;
 
-// 각 구슬의 정보
-int x[101];
-int y[101];
-int weight[101];
-int dir[101];
-bool alive[101];
+int x[MAX_N + 1];
+int y[MAX_N + 1];
+int weight[MAX_N + 1];
+int dir[MAX_N + 1];
+
+bool alive[MAX_N + 1];
+
+// 해당 좌표에 있는 구슬 번호
+int board[MAX_POS][MAX_POS];
+
 // U, R, D, L
 int dx[4] = {0, 1, 0, -1};
 int dy[4] = {1, 0, -1, 0};
 
-// 문자 방향을 숫자로 바꾸는 함수
 int ChangeDir(char d) {
     if(d == 'U')
         return 0;
@@ -25,57 +33,80 @@ int ChangeDir(char d) {
     if(d == 'D')
         return 2;
 
-    return 3; // L
+    return 3;
 }
 
-// 모든 살아 있는 구슬을 1초 이동
-void Move() {
+// a번 구슬이 b번 구슬보다 강한지
+bool IsStronger(int a, int b) {
+    if(weight[a] != weight[b])
+        return weight[a] > weight[b];
+
+    return a > b;
+}
+
+// 좌표 범위를 벗어났는지 확인
+bool OutOfRange(int ball_x, int ball_y) {
+    return ball_x < -LIMIT || ball_x > LIMIT ||
+           ball_y < -LIMIT || ball_y > LIMIT;
+}
+
+// 1초 진행
+bool Simulate() {
+    bool collision_happened = false;
+
+    // 1. 모든 구슬 이동
     for(int i = 1; i <= n; i++) {
         if(alive[i] == false)
             continue;
 
         x[i] += dx[dir[i]];
         y[i] += dy[dir[i]];
+
+        // 이 범위를 벗어난 구슬은 앞으로 충돌할 수 없음
+        if(OutOfRange(x[i], y[i])) {
+            alive[i] = false;
+        }
     }
-}
 
-// a번 구슬이 b번 구슬보다 영향력이 큰지 확인
-bool IsStronger(int a, int b) {
-    // 무게가 다르면 무거운 구슬이 강함
-    if(weight[a] != weight[b])
-        return weight[a] > weight[b];
-
-    // 무게가 같으면 번호가 큰 구슬이 강함
-    return a > b;
-}
-
-// 현재 위치에서 충돌 처리
-bool Collision() {
-    bool collision_happened = false;
-
+    // 2. 이동한 좌표에 구슬 배치
     for(int i = 1; i <= n; i++) {
         if(alive[i] == false)
             continue;
 
-        for(int j = i + 1; j <= n; j++) {
-            if(alive[j] == false)
-                continue;
+        int board_x = x[i] + OFFSET;
+        int board_y = y[i] + OFFSET;
 
-            // 두 구슬이 같은 위치라면 충돌
-            if(x[i] == x[j] && y[i] == y[j]) {
-                collision_happened = true;
+        // 해당 위치에 아직 구슬이 없음
+        if(board[board_x][board_y] == 0) {
+            board[board_x][board_y] = i;
+        }
+        // 해당 위치에 이미 다른 구슬이 있음
+        else {
+            collision_happened = true;
 
-                // i가 더 강하면 j 제거
-                if(IsStronger(i, j)) {
-                    alive[j] = false;
-                }
-                // j가 더 강하면 i 제거
-                else {
-                    alive[i] = false;
-                    break;
-                }
+            int other = board[board_x][board_y];
+
+            // 새로 들어온 i번 구슬이 더 강함
+            if(IsStronger(i, other)) {
+                alive[other] = false;
+                board[board_x][board_y] = i;
+            }
+            // 기존 구슬이 더 강함
+            else {
+                alive[i] = false;
             }
         }
+    }
+
+    // 3. 다음 시간을 위해 board 초기화
+    for(int i = 1; i <= n; i++) {
+        if(alive[i] == false)
+            continue;
+
+        int board_x = x[i] + OFFSET;
+        int board_y = y[i] + OFFSET;
+
+        board[board_x][board_y] = 0;
     }
 
     return collision_happened;
@@ -92,7 +123,7 @@ int main() {
 
             cin >> x[i] >> y[i] >> weight[i] >> d;
 
-            // 이동 중간의 0.5 좌표를 정수로 만들기 위해 2배
+            // 0.5 단위 충돌을 정수 좌표로 처리
             x[i] *= 2;
             y[i] *= 2;
 
@@ -102,12 +133,8 @@ int main() {
 
         int last_time = -1;
 
-        // 2배한 좌표의 범위가 -2000 ~ 2000이므로
-        // 4000초까지만 확인하면 충분
         for(int time = 1; time <= 4000; time++) {
-            Move();
-
-            if(Collision()) {
+            if(Simulate()) {
                 last_time = time;
             }
         }
