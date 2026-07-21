@@ -1,105 +1,77 @@
 #include <iostream>
 using namespace std;
 
-int n, m, t;
+int n, m;
+int r, c;
 
-int grid[21][21];      // 각 칸에 적힌 숫자
-int marble[21][21];    // 현재 구슬이 있으면 1, 없으면 0
+int grid[21][21];
+int pos[401][2];  // pos[숫자][0] = 행, pos[숫자][1] = 열
+int temp;
 
-// 문제에서 정한 우선순서: 상, 하, 좌, 우
-int dx[4] = {-1, 1, 0, 0};
-int dy[4] = {0, 0, -1, 1};
-
-bool InRange(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < n;
+bool InRange(int x,int y){
+    return x>=0 && x< n && y>=0 && y<n;
 }
 
-// 모든 구슬을 1초 동안 동시에 이동
-void MoveAll() {
-    // temp[x][y] = 이번 이동에서 이 칸으로 온 구슬의 개수
-    int temp[21][21] = {};
-
-    // 현재 구슬이 있는 모든 칸 확인
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) {
-
-            if(marble[i][j] == 0)
-                continue;
-
-            // (i, j)에 구슬 하나가 있음
-            int max_num = -1;
-            int next_x = i;
-            int next_y = j;
-
-            // 상, 하, 좌, 우 중 가장 큰 숫자의 칸 찾기
-            for(int k = 0; k < 4; k++) {
-                int nx = i + dx[k];
-                int ny = j + dy[k];
-
-                if(!InRange(nx, ny))
-                    continue;
-
-                if(grid[nx][ny] > max_num) {
-                    max_num = grid[nx][ny];
-                    next_x = nx;
-                    next_y = ny;
-                }
-            }
-
-            // 구슬이 다음 칸으로 이동
-            temp[next_x][next_y]++;
-        }
-    }
-
-    // 충돌 처리 후 marble 배열 갱신
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) {
-
-            if(temp[i][j] == 1)
-                marble[i][j] = 1;
-            else
-                marble[i][j] = 0;
-        }
-    }
-}
+// 8방향
+// 위 → 오른위 → 오른쪽 → 오른아래
+// 아래 → 왼아래 → 왼쪽 → 왼위
+int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
+int dy[8] = { 0,  1, 1, 1, 0,-1,-1, -1};
 
 int main() {
-    cin >> n >> m >> t;
+    cin >> n >> m;
 
-    // 격자의 숫자 입력
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
             cin >> grid[i][j];
+
+            int num = grid[i][j];
+
+            pos[num][0] = i;
+            pos[num][1] = j;
         }
     }
 
-    // 처음 M개 구슬의 위치 입력
-    for(int i = 0; i < m; i++) {
-        int r, c;
-        cin >> r >> c;
+    for(int k=0;k<m;k++){
+    for(int i=1;i <= n*n;i++){
+         r = pos[i][0];
+         c =pos[i][1]; // 1일떄 좌표
+         int max_num=0;
+         int next_x=r;
+         int next_y=c;
+        for(int j=0;j<8;j++){
+            int nx= r + dx[j];
+            int ny =c + dy[j];
+            if(!InRange(nx,ny)) continue;
+            
+            if(max_num < grid[nx][ny]){
+                max_num = grid[nx][ny];
+                next_x =nx;
+                next_y=ny;
 
-        r--;
-        c--;
+            }
 
-        marble[r][c] = 1;
+        }
+        temp = grid[next_x][next_y];
+        grid[next_x][next_y] =grid[r][c];
+        grid[r][c] =temp;
+         pos[i][0]= next_x;
+         pos[i][1]=next_y;
+
+pos[temp][0] = r;
+pos[temp][1] = c;
+
+    }
     }
 
-    // T초 동안 이동
-    for(int time = 0; time < t; time++) {
-        MoveAll();
-    }
 
-    // 남아 있는 구슬 개수 세기
-    int answer = 0;
-
-    for(int i = 0; i < n; i++) {
+     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
-            if(marble[i][j] == 1)
-                answer++;
+            cout << grid[i][j] <<" ";
         }
+        cout << "\n";
     }
 
-    cout << answer;
 
     return 0;
 }
