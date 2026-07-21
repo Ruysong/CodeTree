@@ -5,12 +5,11 @@ int test_case;
 int n;
 
 // 각 구슬의 정보
-int x[51];
-int y[51];
-int weight[51];
-int dir[51];
-bool alive[51];
-
+int x[101];
+int y[101];
+int weight[101];
+int dir[101];
+bool alive[101];
 // U, R, D, L
 int dx[4] = {0, 1, 0, -1};
 int dy[4] = {1, 0, -1, 0};
