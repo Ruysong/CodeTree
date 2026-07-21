@@ -3,7 +3,7 @@ using namespace std;
 
 int n, m;
 
-int ball[401][3];
+int ball[2501][3];
 // ball[i][0] = 행
 // ball[i][1] = 열
 // ball[i][2] = 방향
@@ -24,7 +24,7 @@ int ChangeDir(char dir) {
 }
 
 void Simulate() {
-    int temp[21][21] = {};
+    int temp[51][51] = {};
 
     // 모든 구슬을 1초 움직임
     for(int i = 0; i < m; i++) {
