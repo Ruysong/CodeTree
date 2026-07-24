@@ -28,7 +28,7 @@ void Choose(int cnt){
 
 }
 int main() {
-    cin >> n>>k;
+    cin >> k>>n;
 
     Choose(0);
 
