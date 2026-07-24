@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int n;
@@ -32,11 +33,13 @@ void Choose(int x){
         return;
     }
 
-    for(int i=0;i<4; i++){
+    for(int i=1;i<4; i++){
          ans.push_back(i);
         Choose(x + 1);
         ans.pop_back();
     }
+
+
 }
 
 int main() {
