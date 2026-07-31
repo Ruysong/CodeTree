@@ -9,7 +9,7 @@ void determine(){
     //subsequence의 길이를 1부터 n/2까지 잡을 수 있겟고..
     int ok=true;
     for(int len=1;len<=n/2;len++){
-        for(int i=0;i<i + 2 * len;i++){
+        for (int i = 0; i + 2 * len <= n; i++){
             int cnt=0;
            for(int j=0;j<len;j++){ 
             if(i+len+j > n) continue;
