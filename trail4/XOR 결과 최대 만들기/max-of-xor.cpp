@@ -31,7 +31,7 @@ int main() {
     for (int i = 1; i <= n; i++)
     cin >> nums[i];
     choose(0,1); // 0부터 m개 골라야지?
-  
+    cout << ans;
     return 0;
 
 }
