@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 int n,m;
 int arr[21];
@@ -29,7 +30,7 @@ int main() {
     cin >>n>>m;
     for (int i = 1; i <= n; i++)
     cin >> nums[i];
-    choose(0,0); // 0부터 m개 골라야지?
+    choose(0,1); // 0부터 m개 골라야지?
   
     return 0;
 
