@@ -15,6 +15,9 @@ int cost = 0;
 void choose(int now, int cnt) {
     // 모든 지점을 방문했음
     if (cnt == n) {
+            // 현재 지점에서 1번으로 돌아갈 길이 없음
+            if (grid[now][1] == 0) return;
+
         cost += grid[now][1];   // 현재 지점에서 1번으로 복귀
         ans = min(ans, cost);
         cost -= grid[now][1];
@@ -23,8 +26,8 @@ void choose(int now, int cnt) {
 
     for (int next = 2; next <= n; next++) {
         if (visited[next]) continue;
+       // now에서 next로 갈 수 없는 길
         if (grid[now][next] == 0) continue;
-        
         visited[next] = 1;
         cost += grid[now][next];  // now에서 next로 이동
 
