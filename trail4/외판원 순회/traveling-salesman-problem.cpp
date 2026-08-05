@@ -23,7 +23,8 @@ void choose(int now, int cnt) {
 
     for (int next = 2; next <= n; next++) {
         if (visited[next]) continue;
-
+        if (grid[now][next] == 0) continue;
+        
         visited[next] = 1;
         cost += grid[now][next];  // now에서 next로 이동
 
