@@ -10,6 +10,7 @@ int path[11];
 
 int cnt = 0;
 int ans = INT_MAX;
+int cost = 0;
 
 void choose(int now, int cnt) {
     // 모든 지점을 방문했음
@@ -45,7 +46,8 @@ int main() {
     path[1] = 1;     // 첫 번째 방문 지점은 항상 1번
     visited[1] = 1;  // 1번 지점은 이미 방문함
 
-    choose(2);       // 두 번째 방문 지점부터 선택
+    
+    choose(1, 1);      // 두 번째 방문 지점부터 선택
 
     cout << ans;
 
