@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iostream>
 using namespace std;
 
 int n, m;
@@ -35,7 +36,9 @@ int main() {
             cin >> grid[i][j];
         }
     }
+    dfs(0, 0);
 
+cout << visited[n - 1][m - 1];
 
 
     return 0;
