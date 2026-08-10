@@ -6,15 +6,14 @@ int n, m;
 int grid[101][101];
 int visited[101][101]={0};
 int people[100];
-
+int village_cnt = 0;
 
 int dx[4] = {1, -1, 0, 0};
 int dy[4] = {0, 0, 1, -1};
 bool InRange(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < m;
+    return x >= 0 && x < n && y >= 0 && y < n;
 }
 
-int village_cnt = 0;
 int cnt; //그냥 해당 빌리지에서 잠깐 몇명인지 세는거.
 void dfs(int x, int y) {
     visited[x][y] = true;
