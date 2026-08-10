@@ -1,12 +1,12 @@
 #include <iostream>
-#include <iostream>
+#include <algorithm>
 using namespace std;
 
 int n, m;
 int grid[101][101];
 int visited[101][101]={0};
 int people[100];
-int cnt; 
+
 
 int dx[4] = {1, -1, 0, 0};
 int dy[4] = {0, 0, 1, -1};
