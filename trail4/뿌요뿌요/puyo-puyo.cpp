@@ -4,7 +4,7 @@ using namespace std;
 
 int n;
 int grid[100][100];
-int visitied[100][100]={0};
+int visited[100][100]={0};
 int bomb; //크기가 4개이상인 블럭 개수
 int max_block; //같은 블럭일떄.
 int cnt;
