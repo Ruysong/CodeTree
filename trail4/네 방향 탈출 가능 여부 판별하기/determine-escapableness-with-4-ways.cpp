@@ -7,34 +7,38 @@ int n, m;
 int a[100][100];
 int visited[100][100];
 int order =0;
-int answer[100][100];
 queue<pair<int,int>> q;
 
 void push(int x, int y){
-    answer[x][y]=order++;
+    
     visited[x][y]=true;
     q.push(make_pair(x,y));
 }
+int Inrange(int x, int y){
+    if(x<n && y<m && x>=0 && y>=0) return 1;
+
+    return 0;
+}
 
 int ok(int x,int y){
+    if(!Inrange(x,y)) return 0;
+      
     if(visited[x][y]) return 0;
-    if(x<0 || y< 0 || x>n || y>n) return 0;
-    if(a[x][y]) return 0;
-
+    if(!a[x][y]) return 0;
     return 1;
 
 }
 
 void bfs(){
-    int dx[2]= {1,0};
-    int dy[2]= {0,1};
+    int dx[4]= {1,0,-1,0};
+    int dy[4]= {0,1,0,-1};
 
     while(!q.empty()){
         int x = q.front().first;
         int y = q.front().second;
         q.pop();
 
-        for(int i=0;i<2;i++){
+        for(int i=0;i<4;i++){
             int n_x=x+dx[i];
             int n_y=y+dy[i];
             if(ok(n_x,n_y))
@@ -58,6 +62,7 @@ int main() {
     push(0,0);
     bfs();
     
+    cout << visited[n-1][m-1];
 
     return 0;
 }
