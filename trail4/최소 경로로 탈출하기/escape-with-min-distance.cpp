@@ -1,6 +1,8 @@
 #include <iostream>
 #include <algorithm>
 #include <queue>
+#include <climits>
+
 using namespace std;
 
 int n, m;
@@ -19,7 +21,7 @@ void push(int x, int y, int s){
 }
 void bfs(){
     while(!q.empty()){
-        int x=q.front().frist;
+        int x=q.front().first;
         int y=q.front().second;
         q.pop();
     
